@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWING Capstone</title>
     <style>
-        body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 1000px; margin: 40px auto; padding: 20px; color: #24292f; background: #fafafa; }
-        .card { background: white; padding: 30px; border: 1px solid #d0d7de; border-radius: 8px; shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        h1 { border-bottom: 2px solid #0969da; padding-bottom: 8px; color: #0969da; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9em; }
-        th, td { border: 1px solid #d0d7de; padding: 12px; text-align: left; }
-        th { background-color: #f6f8fa; font-weight: 600; }
-        tr:nth-child(even) { background-color: #fbfcfd; }
+        body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 1100px; margin: 40px auto; padding: 20px; color: #333; background-color: #f9f9f9; }
+        .container { background: white; padding: 30px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        h1 { color: #003d73; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { border: 1px solid #dfe2e5; padding: 12px; text-align: left; vertical-align: top; }
+        th { background-color: #f6f8fa; color: #24292f; }
+        tr:nth-child(even) { background-color: #fafbfc; }
+        .id-cell { font-weight: bold; color: #0056b3; width: 100px; }
     </style>
 </head>
 <body>
 
-<div class="card">
+<div class="container">
     <h1>Problem</h1>
-    <p>We propose a brachiating robot which will swing between and along bars from one hold to another, similar to how some monkeys move. Our focus is solving the problem of moving a camera along an array of monkey bars as an initial step toward jungle surveillance.</p>
+    <p>Our focus is on solving the problem of moving a camera along an array of monkey bars—an initial step towards surveilling a jungle environment. We propose a brachiating robot which will swing between and along the bars from one hold to another.</p>
 
     <h1>Requirements Matrix</h1>
-    <div id="matrix-container">Loading requirements from file...</div>
+    <div id="matrix-container">Loading requirements...</div>
 
-    <h1>Concept</h1>
-    <p>Site content coming soon.</p>
-
-    <h1>Videos</h1>
+    <h1>Concept & Videos</h1>
     <p>Site content coming soon.</p>
 </div>
 
@@ -34,31 +32,31 @@
     fetch('matrix.csv')
         .then(response => response.text())
         .then(data => {
-            let rows = data.split('\n').filter(row => row.trim() !== "");
+            const rows = data.split('\n').filter(row => row.trim() !== "");
             let table = '<table><thead><tr>';
             
-            // Create Headers
-            rows[0].split(',').forEach(header => {
-                table += `<th>${header}</th>`;
-            });
+            // Headers
+            rows[0].split(',').forEach(h => table += `<th>${h}</th>`);
             table += '</tr></thead><tbody>';
 
-            // Create Body
+            // Rows (Starting from index 1)
             for (let i = 1; i < rows.length; i++) {
                 table += '<tr>';
-                // Simple regex to handle commas inside quotes if you ever add them
-                let cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                cols.forEach(col => {
-                    table += `<td>${col.replace(/"/g, '')}</td>`;
+                // Split by comma, but ignore commas inside quotes
+                const cols = rows[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                
+                cols.forEach((col, index) => {
+                    const cleanText = col.replace(/^"|"$/g, '').trim();
+                    const className = index === 0 ? 'class="id-cell"' : '';
+                    table += `<td ${className}>${cleanText}</td>`;
                 });
                 table += '</tr>';
             }
+            
             table += '</tbody></table>';
             document.getElementById('matrix-container').innerHTML = table;
         })
-        .catch(err => {
-            document.getElementById('matrix-container').innerHTML = "Error loading matrix.csv. Ensure the file exists in the same folder.";
-        });
+        .catch(err => console.error("Error loading CSV:", err));
 </script>
 
 </body>
