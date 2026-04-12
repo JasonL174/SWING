@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWING Capstone</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 20px; color: #333; }
+        h1 { border-bottom: 2px solid #eee; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
 </head>
 <body>
 
     <h1>Problem</h1>
     <p>The problem that we are looking to create a robotic solution for is navigating a camera (or other data-collecting devices) through trees in a forest or jungle. However, given the length of time and size of the group, a functioning prototype for this is well out of the scope of the class. Because of this, our focus will be on solving the problem of moving a camera along an array of monkey bars - an initial step towards surveilling a jungle environment. We propose a brachiating robot which will swing between and along the bars from one hold to another, similar to how some monkeys move. </p>
 
-    <h1>Requirements</h1>
-    <p>Site content coming soon.</p>
+    <h1>Requirements Matrix</h1>
+    <div id="matrix-container">Loading matrix...</div>
 
     <h1>Concept</h1>
     <p>Site content coming soon.</p>
@@ -19,5 +26,25 @@
     <h1>Videos</h1>
     <p>Site content coming soon.</p>
 
+    <script>
+        fetch('matrix.csv')
+            .then(response => response.text())
+            .then(data => {
+                let rows = data.split('\n');
+                let table = '<table>';
+                rows.forEach((row, index) => {
+                    let cols = row.split(',');
+                    if (cols.length > 1) {
+                        table += '<tr>';
+                        cols.forEach(col => {
+                            table += index === 0 ? `<th>${col}</th>` : `<td>${col}</td>`;
+                        });
+                        table += '</tr>';
+                    }
+                });
+                table += '</table>';
+                document.getElementById('matrix-container').innerHTML = table;
+            });
+    </script>
 </body>
 </html>
