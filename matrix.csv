@@ -6,3 +6,15 @@ FR-1.4 (H),Release Previous Bar,Ensures at least one secure grip at all times.,D
 FR-1.5 (H),Reach Capability,Allow traversal over reasonable distances.,Max distance <= 0.62 m.
 FR-2.1 (H),Environmental Imaging,Uses perception to adaptively make decisions.,Bar visibility >= 80%.
 FR-2.2 (H),Image Motion Planning,Plan movement from visual information.,"1. Generation time <= 2 sec<br>2. Simulated success >= 90%"
+FR-3.1 (M),State Transmission,Allows operator oversight for debugging and safety.,"Latency < 200ms<br>Packet loss <= 1% over 2 min"
+FR-3.2 (M),Operator Commands,Ensures responsive semi-teleoperation.,"Ack < 100ms<br>98% execution success rate"
+FR-3.3 (H),Emergency Stop,Ensures safety of robot and operators.,"100ms response time<br>Safe mode entered<br>100% success rate"
+NFR-1.1 (M),Swing Time Limit,Limits dead time and energy loss.,95% of swings completed < 10s.
+NFR-1.2 (M),Maximum Branch Force,Prevents branch breakage.,Peak force < 100N over 10 trials.
+NFR-1.3 (M),Minimum Grip Duration,Ensures no slipping when stationary.,No slippage for 2 min (20 trials).
+NFR-2.1 (H),Reliability in Traversal,Ensures viability for long-term usage.,95% success over 100 trials.
+NFR-3.1 (H),Branch Detection Accuracy,Ensures reliable selection of branches.,95% precision within 0.6m.
+NFR-3.2 (M),Motion Plan Latency,Reduces downtime between perception and motion.,"Median < 1s<br>95% < 1.5s"
+NFR-4.1 (L),Controller Display Refresh,Provides operator awareness.,Update interval <= 1s.
+NFR-4.2 (M),Command Responsiveness,Confirms system responsiveness for control.,"Acknowledge time < 100ms<br>Response < 3s"
+NFR-5.1 (M),Battery Life,Balance between weight and duration.,30 mins continuous operation.
