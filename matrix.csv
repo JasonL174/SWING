@@ -1,0 +1,4 @@
+ID,Requirement,Justification,Testable Criteria
+FR-1.1 (H),Stability Before Movement,Guarantees gripper attachment is secure preventing slippage.,Grip force >= 1.2x robot weight.
+FR-1.2 (H),Swing Initialization,Enables traversal and prevents undershooting/overshooting.,Swing amplitude error < 5%.
+FR-1.3 (H),Securing Grip,Guarantees stability during transfer to prevent falling.,Contact pressure >= 1.1x min force.
