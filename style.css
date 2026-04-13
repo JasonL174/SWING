@@ -99,4 +99,6 @@ video {
 .author-block {
     flex: 1 1 200px;
     text-align: center;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
 }
