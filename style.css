@@ -81,12 +81,12 @@ video {
 
 
 .title {
-    font-weight: 800 !important;
-    color: #000 !important;
-    margin-bottom: 2rem !important;
-    line-height: 1.1 !important;
-    text-align: center !important;
-    display: block !important;
+    font-weight: 800;
+    color: #ff0000;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    text-align: center;
+    display: block;
 }
 
 .authors {
