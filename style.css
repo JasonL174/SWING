@@ -80,8 +80,11 @@ video {
 }
 
 
-.intro {
-    color: #000;
+.title {
+    font-weight: 800 !important;
+    color: #000 !important;
+    margin-bottom: 2rem !important;
+    line-height: 1.1 !important;
 }
 
 .authors {
