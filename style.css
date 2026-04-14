@@ -79,6 +79,13 @@ video {
     background: #000; /* Black background while loading */
 }
 
+.intro {
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
 .title {
     font-weight: 800;
