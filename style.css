@@ -68,12 +68,16 @@ tr:nth-child(even) {
     text-align: center;
 }
 
-.video-item.landscape {
-    grid-column: span 3;
+.video-item.span-6 { 
+    grid-column: span 6; 
 }
 
-.video-item.portrait {
-    grid-column: span 2;
+.video-item.span-3 { 
+    grid-column: span 3; 
+}
+
+.video-item.span-2 { 
+    grid-column: span 2; 
 }
 
 .video-item h3 {
